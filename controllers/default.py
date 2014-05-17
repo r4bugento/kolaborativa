@@ -23,6 +23,9 @@ def index():
     return dict(form=form)
 
 def principal():
+    if auth.user:
+        projeto = db(db.projects.project_owner==auth.user.id).select().first()
+        return dict(projeto=projeto)
     return dict()
 
 def user():
